@@ -1,0 +1,46 @@
+{
+  "easy": [
+    ["What comes down but never goes up?", "Rain"],
+    ["What goes up but never comes down?", "Age"],
+    ["What can you catch but not throw?", "Cold"],
+    ["It has many teeth but cannot bite.", "Comb"],
+    ["It can be sharp, but not a knife.", "Wit"],
+    ["Only useful once it's broken.", "Egg"],
+    ["The more it dries, the wetter it gets.", "Towel"],
+    ["It goes through cities and fields, but never moves.", "Road"],
+    ["What goes up but never comes down?", "Age"],
+    ["It's left behind every time we move forward.", "Past"],
+    ["It's yours, but people use it more", "Name"],
+    ["It's free, yet people spend entire lives chasing it.", "Time"]
+  ],
+  "medium": [
+    ["Always on the ground, but never dirty.", "Shadow"],
+    ["What has a neck but no head?", "Bottle"],
+    ["So fragile that saying its name breaks it.", "Silence"],
+    ["Something you can hold without your hands or arms.", "Breathe"],
+    ["Full of holes but still holds water.", "Sponge"],
+    ["Always ahead, but never seen.", "Future"],
+    ["Increases the more you avoid it.", "Problem"],
+    ["The more you share me, the less you have.", "Secret"],
+    ["People buy it to eat, but never eat it.", "Plate"],
+    ["It can be cracked, made, told, and played.", "Joke"],
+    ["What can be open yet never close?", "Mind"],
+    ["It can go through glass without breaking it.", "Light"],
+    ["Upside down all the same, when typed in capital letters", "SWIMS"],
+    ["Sounds the same when you remove its first or last letter", "Empty"],
+    ["The more you share me, the less you have.", "Secret"],
+    ["It travels the world while staying in the same spot.", "Stamp"],
+    ["Gets sharper the more you use it, but isn't a knife.", "Brain"],
+    ["Pronounced the same if you take away four of its letters.", "Queue"]
+  ],
+  "hard": [
+    ["It has no beginning or end, yet surrounds everything.", "Circle"],
+    ["I have no life, but I can die.", "Battery"],
+    ["You throw it to use it and bring it back when you're done.", "Anchor"],
+    ["The more you take, the more you leave behind.", "Footsteps"],
+    ["The more of this there is, the less you see.", "Darkness"],
+    ["Begins with an 'e', but contains only one letter.", "Envelope"],
+    ["It has keys but no locks, space but no room.", "Keyboard"],
+    ["It has four eyes but cannot see.", "Mississippi"]
+  ]
+}

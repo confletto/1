@@ -1,0 +1,173 @@
+{
+  "animal": {
+    "easy": [
+      "bear",
+      "camel",
+      "eagle",
+      "zebra",
+      "frog",
+      "shark"
+    ],
+    "medium": [
+      "baboon",
+      "beetle",
+      "bobcat",
+      "dolphin",
+      "giraffe",
+      "hamster",
+      "iguana",
+      "jellyfish",
+      "ladybug",
+      "raccoon",
+      "squirrel",
+      "tortoise"
+    ],
+    "hard": [
+      "alligator",
+      "beluga whale",
+      "butterfly",
+      "capybara",
+      "chameleon",
+      "chimpanzee",
+      "chipmunk",
+      "clownfish",
+      "crocodile",
+      "flamingo",
+      "grasshopper",
+      "hippopotamus",
+      "kangaroo",
+      "mockingbird",
+      "mongoose",
+      "octopus",
+      "orangutan",
+      "parakeet",
+      "pelican",
+      "red panda",
+      "seahorse",
+      "swordfish",
+      "tarantula"
+    ]
+  },
+  "color": {
+    "easy": [
+      "amber",
+      "beige",
+      "black",
+      "blue",
+      "brown",
+      "cream",
+      "gold",
+      "green",
+      "grey",
+      "ivory",
+      "pink",
+      "red",
+      "white",
+      "yellow"
+    ],
+    "medium": [
+      "bronze",
+      "copper",
+      "cyan",
+      "ecru",
+      "indigo",
+      "lilac",
+      "maroon",
+      "mauve",
+      "purple",
+      "silver",
+      "teal",
+      "violet"
+    ],
+    "hard": [
+      "emerald green",
+      "hot pink",
+      "jungle green",
+      "lavender",
+      "magenta",
+      "navy blue",
+      "periwinkle",
+      "sea green",
+      "turquoise"
+    ]
+  },
+  "country": {
+    "easy": [
+      "france",
+      "greece",
+      "italy",
+      "spain",
+      "sweden"
+    ],
+    "medium": [
+      "albania",
+      "austria",
+      "belgium",
+      "cyprus",
+      "denmark",
+      "estonia",
+      "finland",
+      "georgia",
+      "germany",
+      "hungary",
+      "iceland",
+      "ireland",
+      "latvia",
+      "norway",
+      "poland",
+      "serbia",
+      "turkey"
+    ],
+    "hard": [
+      "azerbaijan",
+      "belarus",
+      "bosnia",
+      "bulgaria",
+      "kazakhstan",
+      "lithuania",
+      "luxembourg",
+      "montenegro",
+      "netherlands",
+      "portugal",
+      "romania",
+      "russia",
+      "slovakia",
+      "slovenia",
+      "switzerland",
+      "ukraine",
+      "united kingdom"
+    ]
+  },
+  "fruit": {
+    "easy": [
+      "apple",
+      "berry",
+      "grape",
+      "lemon",
+      "melon",
+      "mango"
+    ],
+    "medium": [
+      "banana",
+      "cherry",
+      "lychee",
+      "orange",
+      "peach",
+      "kiwi"
+    ],
+    "hard": [
+      "blackberry",
+      "blueberry",
+      "coconut",
+      "cranberry",
+      "dragon fruit",
+      "grapefruit",
+      "pineapple",
+      "pomegranate",
+      "passion fruit",
+      "raspberry",
+      "strawberry",
+      "watermelon"
+    ]
+  }
+}
