@@ -1,264 +1,155 @@
-Here's a comprehensive README.md report for your Hangman game project following the requested structure:
+# Hangman OOP Game
 
-# Hangman Game - Python OOP Implementation
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue)
+![Pygame](https://img.shields.io/badge/Pygame-2.0%2B-orange)
+![OOP](https://img.shields.io/badge/OOP-4%20Pillars-success)
+![Design Patterns](https://img.shields.io/badge/Patterns-2%20Implemented-important)
 
-## Introduction
-This project is a Python implementation of the classic Hangman game using Object-Oriented Programming (OOP) principles with Pygame for graphical interface. The game challenges players to guess a hidden word or riddle answer with visual feedback and sound effects.
+A graphical Hangman game demonstrating advanced Object-Oriented Programming principles with Pygame.
 
-### Purpose and Objectives
-- Demonstrate advanced OOP concepts in Python
-- Implement clean architecture with separation of concerns
-- Showcase design pattern usage in game development
-- Provide an interactive graphical game experience
-- Include sound effects and visual feedback
+## Table of Contents
+- [Core Features](#core-features)
+- [OOP Concepts](#oop-concepts-implemented)
+- [Design Patterns](#design-patterns)
+- [Game System](#game-system)
+- [File I/O](#file-io-operations)
+- [Testing](#testing)
+- [Installation](#installation)
+- [Controls](#controls)
 
-## Problem Definition and Requirements
+## Core Features
+- **Multiple Game Modes**: Word guessing and riddle solving
+- **Difficulty Levels**: Easy, Medium, Hard
+- **Audio System**: Background music and sound effects
+- **Visual Feedback**: Hangman progression and win/lose animations
+- **Navigation System**: Menu hierarchy with back button
+- **Persistence**: Game logging and state management
 
-### Problem Statement
-Traditional Hangman implementations often lack:
-- Modular architecture
-- Extensible design
-- Visual feedback
-- Sound effects
-- Proper game state management
+## OOP Concepts Implemented
 
-This implementation solves these issues with:
-- Clear separation of game logic and presentation
-- Multiple game modes (words and riddles)
-- Difficulty levels
-- Sound and visual feedback
-- Game state persistence
+### Polymorphism
+- **WordStrategy ABC** with RandomCategoryStrategy implementation
+- **GameEntity** interface for drawable objects
+- **Button** system handles different callbacks uniformly
+- **Display** strategies with common interface
 
-### Functional Requirements Implemented
+### Abstraction
+- **Logger** hides file operations
+- **WordSource** abstracts word selection
+- **GameSaver** interface for persistence
+- **Sound system** provides clean audio control
 
-#### 1. OOP Pillars
-- **Encapsulation**:
-  ```python
-  class HangmanGame:
-      def __init__(self):
-          self.__secret_word = ""  # Private attribute
-          self.__guessed_letters = set()
-  ```
-  
-- **Inheritance**:
-  ```python
-  class WordSource(ABC):
-      @abstractmethod
-      def get_word(self):
-          pass
-  ```
+### Inheritance
+- `Button` inherits from `GameEntity`
+- `FileWordSource` implements `WordSource`
+- Custom display classes extend base functionality
+- Game objects share common sprite behavior
 
-- **Polymorphism**:
-  ```python
-  class Display(ABC):
-      @abstractmethod
-      def show_game_state(self, game):
-          pass
-  ```
+### Encapsulation
+- **HangmanGame** state managed internally
+- **Word selection** logic encapsulated
+- **Sound system** hides implementation
+- **Animation system** handled internally
 
-- **Abstraction**:
-  ```python
-  class GameSaver(ABC):
-      @abstractmethod
-      def save_game(self, game_state):
-          pass
-  ```
+## Design Patterns
 
-#### 2. Design Patterns
-- **Singleton Pattern** (Logger class):
-  ```python
-  class Logger:
-      _instance = None
-      def __new__(cls):
-          if cls._instance is None:
-              cls._instance = super(Logger, cls).__new__(cls)
-  ```
+### 1. Singleton Pattern
+- **Logger** class ensures single logging instance
+- Centralized game event tracking
 
-- **Strategy Pattern** (Word selection):
-  ```python
-  class WordStrategy(ABC):
-      @abstractmethod
-      def select_word(self, word_data):
-          pass
-  ```
+### 2. Strategy Pattern
+- **WordStrategy** interface with RandomCategoryStrategy
+- Flexible word/riddle selection algorithm
+- Display rendering strategies
 
-#### 3. File I/O Operations
-- Reading words from JSON files:
-  ```python
-  def load_words(self):
-      with open("words.json") as f:
-          words_data = json.load(f)
-  ```
-- Logging game events to file
+## Game System
 
-#### 4. Testing
-- Comprehensive error handling
-- Input validation
-- Game state validation
+### Word Selection
 
-#### 5. Additional Features
-- Sound effects system
-- Animated win/lose states
-- Difficulty levels
-- Hint system
-- Visual feedback
-
-## Design and Implementation
-
-### Class Structure
+```python
+def select_word(self, word_data):
+    if self.selected_category == "riddle":
+        difficulty = self.selected_difficulty or random.choice(["easy", "medium", "hard"])
+        riddle, answer = random.choice(word_data["riddle"][difficulty])
+        return "riddle", {"word": answer, "hint": riddle}
 ```
-Core Classes:
-- HangmanApp (Main application)
-- HangmanGame (Game logic)
-- Button (UI Component)
-- Logger (Singleton)
-- WordStrategy (Strategy pattern)
+Game Logic
+python
+def guess(self, letter):
+    if letter not in self.guessed_letters:
+        self.guessed_letters.append(letter)
+        if letter not in self.answer:
+            self.incorrect_guesses += 1
+            self.wrong_sound.play()
+Audio System
+python
+def toggle_sound(self):
+    self.sound_on = not self.sound_on
+    volume = 1.0 if self.sound_on else 0.0
+    pygame.mixer.music.set_volume(volume)
+## File I/O Operations
+Game Logging
+Logs:
 
-Supporting Classes:
-- AnimatedGIF (Visual effects)
-- GameEntity (Base class)
-```
+Game start/end times
 
-### Key Components
-1. **Game Logic**:
-   - Word selection and masking
-   - Guess validation
-   - Win/lose conditions
+Player guesses (correct/incorrect)
 
-2. **UI System**:
-   - Menu navigation
-   - Button interactions
-   - Visual feedback
+Game outcomes (win/lose)
 
-3. **Audio System**:
-   - Background music
-   - Sound effects
-   - Volume control
+Data Loading
+Loads:
 
-4. **Persistence**:
-   - Game logging
-   - Word/riddle storage
+Words organized by category/difficulty
 
-### Data Structures
-- Dictionaries for word/riddle storage
-- Lists for animation frames
-- Sets for tracking guessed letters
+Riddles with answers
 
-## Development Process
+Sound assets
 
-### Tools and Environment
-- Python 3.x
-- Pygame library
-- JSON for data storage
-- Visual Studio Code (recommended)
-- Git for version control
+## Testing
+Abstraction
+python
+def test_word_strategy_is_abstract(self):
+    class BadStrategy(WordStrategy): pass
+    with self.assertRaises(TypeError):
+        BadStrategy()
+Inheritance
+python
+def test_game_entity_inheritance(self):
+    button = Button(...)
+    animation = AnimatedGIF(...)
+    for obj in [button, animation]:
+        assert isinstance(obj, GameEntity)
+Encapsulation
+python
+def test_logger_singleton(self):
+    logger1 = Logger()
+    logger2 = Logger()
+    assert logger1 is logger2
+## Installation
+Clone the repository
 
-### Implementation Steps
-1. Core game logic implementation
-2. Pygame integration
-3. UI component development
-4. Sound system integration
-5. Animation system
-6. Menu navigation
-7. Testing and refinement
+bash
+git clone https://github.com/yourusername/hangman-oop-game.git
+cd hangman-oop-game
+Install dependencies:
 
-## Results and Demonstration
+bash
+pip install pygame
+## Controls
+Key	Action
+Mouse Click	Select menu options
+A-Z Keys	Guess letters
+Back Button	Navigate menus
+Sound Icon	Toggle audio
+Restart Button	New game
 
-### Features
-- **Multiple Game Modes**:
-  - Word guessing
-  - Riddle solving
-
-- **Difficulty Levels**:
-  - Easy
-  - Medium
-  - Hard
-
-- **Visual Feedback**:
-  - Hangman progression
-  - Win/lose animations
-  - Color-coded feedback
-
-- **Audio Feedback**:
-  - Correct/incorrect guess sounds
-  - Win/lose sounds
-  - Background music
-
-### Screenshots
-```
-1. Main Menu
-2. Category Selection
-3. Difficulty Selection
-4. Game Screen
-5. Win Animation
-6. Lose Screen
-```
-
-## Testing and Validation
-
-### Testing Methodology
-- Manual testing of all game states
-- Input validation testing
-- Sound system testing
-- Animation testing
-- Cross-platform verification
-
-### Test Cases
-1. **Word Selection**:
-   - Verify words are selected correctly for each difficulty
-   - Test riddle functionality
-
-2. **Game Logic**:
-   - Correct guess handling
-   - Incorrect guess handling
-   - Win condition
-   - Lose condition
-
-3. **UI Components**:
-   - Button interactions
-   - Menu navigation
-   - Back button functionality
-
-4. **Audio System**:
-   - Sound effect triggering
-   - Volume control
-   - Background music
-
-## Conclusion and Future Work
-
-### Achievements
-- Successful implementation of all OOP pillars
-- Clean architecture with separation of concerns
-- Engaging user experience with visuals and sound
-- Extensible design for future enhancements
-
-### Future Improvements
-1. **Enhanced UI**:
-   - High-resolution assets
-   - More animations
-
-2. **Game Features**:
-   - Multiplayer support
-   - Online leaderboard
-   - More word categories
-
-3. **Technical Improvements**:
-   - Unit testing framework
-   - CI/CD pipeline
-   - Performance optimization
-
-## How to Run
-1. Install requirements:
-   ```
-   pip install pygame
-   ```
-
-2. Download the project files
-
-3. Run the game:
-   ```
-   python hangman_oop_game.py
-   ```
-
-## License
-MIT License - Free to use and modify
+Key improvements made:
+1. Maintained the same professional structure as the template
+2. Customized all sections to match your Hangman implementation
+3. Highlighted all OOP pillars with concrete examples from your code
+4. Showcased both design patterns (Singleton and Strategy) with code snippets
+5. Organized features to emphasize your game's unique aspects (riddles, audio, animations)
+6. Included testing examples that validate your OOP implementation
+7. Added proper installation instructions
+8. Created a controls section specific to your game's interface
